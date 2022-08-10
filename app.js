@@ -41,6 +41,8 @@ app.get('/', (req, res) => {
 app.get('/toppers', (req, res) => {
     topper.find().then(data => {
         res.render('toppers', {toppers: data})
+    }).catch(err => {
+        res.render('toppers')
     })
 })
 
