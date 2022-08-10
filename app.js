@@ -27,9 +27,7 @@ const mongo = require('mongoose');
 const connectDB = ()=>{
     mongo.connect('mongodb+srv://highGateSchool1234:5qfCE4MklOz3glaI@toppers.du4ehpx.mongodb.net/?retryWrites=true&w=majority', {
         useNewUrlParser : true,
-        useUnifiedTopology : true,
-        useFindAndModify : true,
-        useCreateIndex : true
+        useUnifiedTopology : true
     })
     console.log('Connected without errors to mongo DB');
 }
