@@ -63,14 +63,15 @@ app.post('/login', (req, res) => {
 
 
 app.get('/edit', (req, res) => {
-    sessionNow=req.session;
-    if(sessionNow.userid){
-        topper.find().then(data => {
-            res.render('edit', {toppers: data})
-        })
-    }else{
-      res.redirect('/')  
-    }
+    // sessionNow=req.session;
+    // if(sessionNow.userid){
+    //     topper.find().then(data => {
+    //         res.render('edit', {toppers: data})
+    //     })
+    // }else{
+    //   res.redirect('/')  
+    // }
+    res.render('edit')
 })
 app.get('/add', (req, res) => {
     sessionNow=req.session;
