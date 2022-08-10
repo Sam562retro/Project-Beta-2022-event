@@ -1,6 +1,10 @@
 const mongo = require('mongoose');
 
 const schema = new mongo.Schema({
+    pic:{
+        type: String,
+        required: true
+    },
     name:{
         type: String,
         required: true
