@@ -5,6 +5,10 @@
     --white: #EEEEEE;
 }
 
+.body{
+    background-color: var(--darkBlue);
+}
+
 .mainContent{
     min-width: 100vw;
     max-width: 100vw;
