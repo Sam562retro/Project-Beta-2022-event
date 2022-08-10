@@ -39,11 +39,12 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 app.get('/toppers', (req, res) => {
-    topper.find().then(data => {
-        res.render('toppers', {toppers: data})
-    }).catch(err => {
-        res.render('toppers')
-    })
+    // topper.find().then(data => {
+    //     res.render('toppers', {toppers: data})
+    // }).catch(err => {
+    //     res.render('toppers')
+    // })
+    res.render('toppers')
 })
 
 
