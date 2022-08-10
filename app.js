@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 const mongo = require('mongoose');
 
 const connectDB = ()=>{
-    mongo.connect('mongodb+srv://highGateSchool1234:5qfCE4MklOz3glaI@toppers.du4ehpx.mongodb.net/?retryWrites=true&w=majority', {
+    mongo.connect('mongodb+srv://highGateSchool1234:5qfCE4MklOz3glaI@toppers.du4ehpx.mongodb.net/?retryWrites=true&w=majority/toppers', {
         useNewUrlParser : true,
         useUnifiedTopology : true
     })
