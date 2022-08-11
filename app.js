@@ -29,30 +29,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 const toppers = db.collection("toppers")
 
 async function start(){
+    let q = await toppers.get('arrays')
+    for(i = 0; i<q.props.arra.length; i++){
+        await toppers.set(q.props.arra[i], {
+            
+        })
+    }
     await toppers.set('arrays', {
         arra: []
     })
-
-    let z = await toppers.get('arrays')
-
-    for(i=0; i<=10; i++){
-        z.props.arra.push(crypto.randomBytes(3*4).toString('base64'));
-    }
-
-    await toppers.set('arrays', {
-        arra: z.props.arra
-    })
-    console.log(z.props.arra)
-    for(i = 0; i<z.props.arra.length; i++){
-        await toppers.set(z.props.arra[i],{
-            name: `${i}`,
-            clas: `${i}`,
-            section: `${i}`,
-            marks: `${i}`,
-            pic: `${i}`
-        })
-        console.log(await toppers.get(z.props.arra[i]))
-    }
 }
 start()
 
@@ -63,10 +48,10 @@ app.get('/toppers',  async(req, res) =>{
     let topperList = []
     let to = await toppers.get('arrays')
     let top = to.props.arra
-    console.log(top)
     for(i = 0; i<top.length; i++){
         let h = await toppers.get(top[i])
-        console.log(h)
+        console.log(h.props)
+        console.log('------------------------------------------------------------------------------------')
         // topperList.push(h.props)
     }
     res.render('toppers', {toppers:topperList})
@@ -78,11 +63,14 @@ app.get('/login', (req, res) => {
 })
 app.post('/login', (req, res) => {
     let username, password;
-    username = req.body.gender === 'Admin';
-    password = req.body.status === 'highgate';
+    username = req.body.username === 'Admin';
+    password = req.body.password === 'highgate';
     if(username && password){
         sessionNow=req.session;
         sessionNow.userid=username;
+        res.redirect('/edit')
+    }else{
+        res.redirect('/')
     }
 })
 
@@ -106,15 +94,28 @@ app.get('/add', (req, res) => {
       res.redirect('/')  
     }
 })
-app.post('/add', (req, res) => {
+app.post('/add', async (req, res) => {
     sessionNow=req.session;
     if(sessionNow.userid){
-        new topper({
-            name: req.body.name,
-            class: req.body.class,
-            section: req.body.section,
-            marks: req.body.marks
+
+
+        let z = await toppers.get('arrays')
+        z.props.arra.push(crypto.randomBytes(3*4).toString('base64'));
+        
+        await toppers.set('arrays', {
+            arra: z.props.arra
         })
+        console.log('#######################################################')
+        console.log(z.props.arra)
+        console.log('#######################################################')
+        await toppers.set(z.props.arra[z.props.arra.length-1],{
+            name: req.body.name,
+            clas: req.body.clas,
+            section: req.body.section,
+            marks: req.body.marks,
+            pic: req.body.pic
+        })
+        res.redirect('/toppers')
     }else{
       res.redirect('/')  
     }
