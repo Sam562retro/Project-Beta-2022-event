@@ -109,7 +109,7 @@ app.post('/add', async (req, res) => {
 
 
         let z = await toppers.get('arrays')
-        z.props.arra.push(encodeURIComponent(crypto.AES.encrypt(term.toString(), config.CRYPTO_PASSPHRASE_RES).toString()));
+        z.props.arra.push(encodeURIComponent(crypto.encrypt(term.toString(), config.CRYPTO_PASSPHRASE_RES).toString()));
         
         await toppers.set('arrays', {
             arra: z.props.arra
