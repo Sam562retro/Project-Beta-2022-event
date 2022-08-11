@@ -4,9 +4,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const sessions = require('express-session');
 const cookieParser = require("cookie-parser");
-const topper = require("toppers");
 const CyclicDb = require("cyclic-dynamodb")
-
+const { v4: uuidv4 } = require('uuid');
 
 
 const db = CyclicDb("hilarious-erin-spacesuitCyclicDB")
@@ -29,19 +28,49 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const toppers = db.collection("toppers")
 
+async function start(){
+    await toppers.set('arrays', {
+        arra: []
+    })
+
+    let z = await toppers.get('arrays')
+
+    for(i=0; i<=10; i++){
+        z.props.arra.push(uuidv4);
+    }
+
+    await toppers.set('arrays', {
+        arra: z.props.arra
+    })
+
+    let h = await toppers.get('arrays')
+
+    for(i = 0; i<h.props.arra.length; i++){
+        await toppers.set(h.props.arra[i],{
+            name: `${i}`,
+            class: `${i}`,
+            section: `${i}`,
+            marks: `${i}`,
+            pic: `${i}`
+        })
+    }
+}
+
 app.get('/', (req, res) => {
     res.render('home')
 })
 app.get('/toppers',  async(req, res) =>{
-    for(i=0;i<=10; i++){
-        await toppers.set(`${i}`, {
-            type:`${i}cat`,
-            color:`${i}orange`
-        })
+    let topperList = []
+    let to = await toppers.get('arrays')
+    let top = to.props.arra
+    console.log(top)
+    for(i = 0; i<top.length; i++){
+        let h = await toppers.get(top[i])
+        console.log(h)
+        toppersList.push(h.props)
     }
-
-    console.log(await topper.get())
-    res.render('/toppers')
+    console.log(topperList)
+    res.render('toppers', {toppers:[]})
 })
 
 

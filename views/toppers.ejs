@@ -103,9 +103,10 @@
       </div>
     </div>
     <div class="sticky-container">
+      <% if(toppers.length){%>
       <main>
-
-
+      
+      <% toppers.forEach(top => { %>
         <section id="hover">
           <div class="laptop__content">
             <div class="laptop__container">
@@ -114,16 +115,17 @@
                   <img style="width:80%; height: auto;" src="hello.png">
                 </div>
                 <div class="contentBx">
-                  <h2>Vandit Kad</h2>
+                  <h2><% top.name %></h2>
                   <p style="color:white; margin-top: 1vh;">HIGHGATE School, Rohini</p>
-                  <p style="color:white; margin-top: -1vh;">Grade 10 Score:</p>
+                  <p style="color:white; margin-top: -1vh;">Grade 10 Score:<% top.marks %></p>
+                  <p style="color:white; margin-top: -1vh;"><% top.class %> <% top.section %></p>
                 </div>
               </div>
             </div>
         </section>
-
-
+      <% }); %>
       </main>
+      <%}%>
     </div>
     <div class="footer">
       <div class="heading" style="font-size: 4vw; margin-bottom:2vh">
