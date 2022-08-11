@@ -44,7 +44,6 @@ async function start(){
     })
 
     let h = await toppers.get('arrays')
-    console.log(h)
     for(i = 0; i<h.props.arra.length; i++){
         await toppers.set(h.props.arra[i],{
             name: `${i}`,
@@ -53,9 +52,11 @@ async function start(){
             marks: `${i}`,
             pic: `${i}`
         })
+        console.log(toppers.get(h.props.arra[i]))
     }
 }
 start()
+
 app.get('/', (req, res) => {
     res.render('home')
 })
