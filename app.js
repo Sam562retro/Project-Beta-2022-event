@@ -36,7 +36,7 @@ async function start(){
     let z = await toppers.get('arrays')
 
     for(i=0; i<=10; i++){
-        z.props.arra.push(uuidv4);
+        z.props.arra.push(uuidv4());
     }
 
     await toppers.set('arrays', {
