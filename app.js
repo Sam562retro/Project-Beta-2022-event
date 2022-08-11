@@ -73,7 +73,7 @@ app.post('/login', (req, res) => {
         sessionNow.userid=username;
         res.redirect('/edit')
     }else{
-        res.redirect('/')
+        res.redirect('/login')
     }
 })
 
@@ -92,7 +92,7 @@ app.get('/edit', async(req, res) => {
         }
         res.render('edit', {toppers:topperList, keys:toppersKeys})
     }else{
-      res.redirect('/')  
+      res.redirect('/login')  
     }
 })
 app.get('/add', (req, res) => {
@@ -100,7 +100,7 @@ app.get('/add', (req, res) => {
     if(sessionNow.userid){
         res.render('add')
     }else{
-      res.redirect('/')  
+      res.redirect('/login')  
     }
 })
 app.post('/add', async (req, res) => {
@@ -109,7 +109,7 @@ app.post('/add', async (req, res) => {
 
 
         let z = await toppers.get('arrays')
-        z.props.arra.push(crypto.randomBytes(3*4).toString('base64'));
+        z.props.arra.push(encodeURIComponent(crypto.AES.encrypt(term.toString(), config.CRYPTO_PASSPHRASE_RES).toString()));
         
         await toppers.set('arrays', {
             arra: z.props.arra
@@ -121,9 +121,9 @@ app.post('/add', async (req, res) => {
             marks: req.body.marks,
             pic: req.body.pic
         })
-        res.redirect('/toppers')
+        res.redirect('/edit')
     }else{
-      res.redirect('/')  
+      res.redirect('/login')  
     }
 })
 

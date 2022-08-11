@@ -34,7 +34,7 @@
 <body>
   <div class="nav">
     <div class="brand">
-      <a href="index.html"><img src="/pics/logo.png" alt="" style="width: 7vw;"></a>
+      <a href="index.html"><img src="/pics/logo.png" alt="" class="logo"></a>
     </div>
     <div class="content">
       <a href="/">
@@ -55,49 +55,52 @@
         <div class="laptop__container">
           <div class="card laptop_card-1">
             <div class="imgBx">
-              <img style="width:80%; height: auto;" src="hello.png">
+              <img style="width:80%; height: auto;" src="https://i.imgur.com/XjuZoke.png">
             </div>
             <div class="contentBx">
-              <h2>Vandit Kad</h2>
-              <br><br>
+              <h2>Adi Jain</h2>
+              <a>More</a>
               <p style="color:white; margin-top: 1vh;">HIGHGATE School, PP</p>
-              <p style="color:white; margin-top: -1vh;"><b>Over all 100%</b></p>
+              <p style="color:white; margin-top: -1vh;"><b>Grade 10 Score: 500</b></p>
             </div>
           </div>
         </div>
         <div class="laptop__container">
           <div class="card laptop_card-2">
             <div class="imgBx">
-              <img style="width:80%; height: auto;" src="user.png">
+              <img style="width:80%; height: auto;" src="https://i.imgur.com/Tu77INH.png">
             </div>
             <div class="contentBx">
-              <h2>Vandit Kad</h2>
+              <h2>Navvye Anand</h2>
+              <a>More</a>
               <p style="color:white; margin-top: 1vh;">HIGHGATE School, PP</p>
-              <p style="color:white; margin-top: -1vh;"><b>Over all 99%</b></p>
+              <p style="color:white; margin-top: -1vh;"><b>Grade 10 Score: 500</b></p>
             </div>
           </div>
         </div>
         <div class="laptop__container">
           <div class="card laptop_card-3">
             <div class="imgBx">
-              <img style="width:80%; height: auto;" src="user.png">
+              <img style="width:80%; height: auto;" src="https://i.imgur.com/OOx9K3N.png">
             </div>
             <div class="contentBx">
               <h2>Vandit Kad</h2>
+              <a>More</a>
               <p style="color:white; margin-top: 1vh;">HIGHGATE School, PP</p>
-              <p style="color:white; margin-top: -1vh;"><b>Over all 99%</b></p>
+              <p style="color:white; margin-top: -1vh;"><b>Grade 10 Score: 499</b></p>
             </div>
           </div>
         </div>
         <div class="laptop__container">
           <div class="card laptop_card-4">
             <div class="imgBx">
-              <img style="width:80%; height: auto;" src="user.png">
+              <img style="width:80%; height: auto;" src="https://i.imgur.com/7teTnrw.png">
             </div>
             <div class="contentBx">
-              <h2>Vandit Kad</h2>
+              <h2>Soham Gupta</h2>
+              <a>More</a>
               <p style="color:white; margin-top: 1vh;">HIGHGATE School, PP</p>
-              <p style="color:white; margin-top: -1vh;"><b>Over all 99%</b></p>
+              <p style="color:white; margin-top: -1vh;"><b>Grade 10 Score: 499</b></p>
             </div>
           </div>
         </div>
@@ -117,9 +120,9 @@
                 </div>
                 <div class="contentBx">
                   <h2><%= top.name %></h2>
+                  <a>More</a>
                   <p style="color:white; margin-top: 1vh;">HIGHGATE School, PP</p>
-                  <p style="color:white; margin-top: -1vh;">Grade 10 Score:<%= top.marks %></p>
-                  <p style="color:white; margin-top: -1vh;"><%= top.clas %> <%= top.section %></p>
+                  <p style="color:white; margin-top: -1vh;">Grade 10 Score: <%= top.marks %></p>
                 </div>
               </div>
             </div>
@@ -129,9 +132,10 @@
       <%}%>
     </div>
 
+    <br><br><br>
       <div class="toppers">
           <div class="details">
-              <div class="heading" style="min-width: 0; text-align:left; margin-bottom:2vh">
+              <div class="heading toppHeading" style="min-width: 0; text-align:left; margin-bottom:2vh">
                   See your results
               </div>
               <div class="tagline" style="  margin-bottom:1vh">
