@@ -18,8 +18,8 @@
 }
 
 .form{
-    min-height: 70vh;
-    min-width: 30vw;
+    min-height: 90vh;
+    min-width: 90vw;
     background-color: var(--grey);
     border-radius: 1vh;
     padding: 5vh 5vw 5vh 5vw;
