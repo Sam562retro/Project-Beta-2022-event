@@ -55,7 +55,7 @@ async function start(){
         })
     }
 }
-
+start()
 app.get('/', (req, res) => {
     res.render('home')
 })
