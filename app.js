@@ -44,7 +44,7 @@ async function start(){
     })
 
     let h = await toppers.get('arrays')
-
+    console.log(h)
     for(i = 0; i<h.props.arra.length; i++){
         await toppers.set(h.props.arra[i],{
             name: `${i}`,
