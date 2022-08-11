@@ -42,17 +42,16 @@ async function start(){
     await toppers.set('arrays', {
         arra: z.props.arra
     })
-
-    let h = await toppers.get('arrays')
-    for(i = 0; i<h.props.arra.length; i++){
-        await toppers.set(h.props.arra[i],{
+    console.log(z.props.arra)
+    for(i = 0; i<z.props.arra.length; i++){
+        await toppers.set(z.props.arra[i],{
             name: `${i}`,
-            class: `${i}`,
+            clas: `${i}`,
             section: `${i}`,
             marks: `${i}`,
             pic: `${i}`
         })
-        console.log(await toppers.get(h.props.arra[i]))
+        console.log(await toppers.get(z.props.arra[i]))
     }
 }
 start()
