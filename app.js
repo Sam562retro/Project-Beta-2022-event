@@ -52,7 +52,7 @@ async function start(){
             marks: `${i}`,
             pic: `${i}`
         })
-        console.log(toppers.get(h.props.arra[i]))
+        console.log(await toppers.get(h.props.arra[i]))
     }
 }
 start()
