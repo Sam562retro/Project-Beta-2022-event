@@ -5,6 +5,11 @@ const bodyParser = require('body-parser');
 const sessions = require('express-session');
 const cookieParser = require("cookie-parser");
 const topper = require("toppers");
+const CyclicDb = require("cyclic-dynamodb")
+
+
+
+const db = CyclicDb("hilarious-erin-spacesuitCyclicDB")
 
 const oneDay = 1000 * 60 * 60 * 4;
 app.use(sessions({
@@ -22,29 +27,21 @@ app.use('/pics', express.static(path.resolve(__dirname, "assets/pics")));
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-const mongo = require('mongoose');
-
-const connectDB = ()=>{
-    mongo.connect('mongodb+srv://highGateSchool1234:5qfCE4MklOz3glaI@toppers.du4ehpx.mongodb.net/?retryWrites=true&w=majority/toppers', {
-        useNewUrlParser : true,
-        useUnifiedTopology : true
-    })
-    console.log('Connected without errors to mongo DB');
-}
-connectDB()
-
-
+const toppers = db.collection("toppers")
 
 app.get('/', (req, res) => {
     res.render('home')
 })
-app.get('/toppers', (req, res) => {
-    // topper.find().then(data => {
-    //     res.render('toppers', {toppers: data})
-    // }).catch(err => {
-    //     res.render('toppers')
-    // })
-    res.render('toppers')
+app.get('/toppers',  async(req, res) =>{
+    for(i=0;i<=10; i++){
+        await toppers.set(`${i}`, {
+            type:`${i}cat`,
+            color:`${i}orange`
+        })
+    }
+
+    console.log(await topper.get())
+    res.render('/toppers')
 })
 
 
