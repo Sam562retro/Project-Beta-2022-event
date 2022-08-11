@@ -9,6 +9,7 @@
   "author": "Soham Gupta, Vandit Kad",
   "license": "ISC",
   "dependencies": {
+    "accessibility-web-page": "0.0.2",
     "body-parser": "^1.20.0",
     "cookie-parser": "^1.4.6",
     "crypto": "^1.0.1",

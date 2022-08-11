@@ -38,6 +38,7 @@
         width: 100%;
         border: 1px solid #ddd;
         }
+        
 
         @media screen and (max-width: 800px) {
             td, th{
@@ -54,10 +55,13 @@
     </style>
 </head>
 
-<body>
+<body class="accessibility-plugin-ac">
     <div class="nav">
         <div class="brand">
             <a href="index.html"><img src="logo.png" alt="" class="logo"></a>
+        </div>
+        <div class="access">
+            <i class="bi bi-plus-circle nav-bi" id="increase-plugin-ac"></i><i class="bi bi-dash-circle nav-bi" id="decrease-plugin-ac"></i>
         </div>
         <div class="content">
             <a href="/"><div class="nav-item">Home</div></a>
@@ -125,7 +129,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="/js/accessibility.js"></script>
 </body>
 
 </html>

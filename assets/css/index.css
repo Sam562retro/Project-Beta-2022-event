@@ -339,7 +339,23 @@ body{
     color: black;
 }
 
+.nav-bi{
+    font-size: 2vw !important;
+    cursor: pointer;
+}
+
+.nav-bi:nth-child(1){
+    margin-right: 1vw;
+}
+
+.nav-bi:nth-child(2){
+    margin-left: 1vw;
+}
+
 @media screen and (max-width: 870px) {
+    .nav-bi{
+        font-size: 3vw !important;
+    }
     .logo{
         width: 20vw;
     }

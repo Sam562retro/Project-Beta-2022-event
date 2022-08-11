@@ -30,10 +30,13 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.1/d3.min.js'></script>
 </head>
 
-<body>
+<body class="accessibility-plugin-ac">
   <div class="nav">
     <div class="brand">
       <a href="index.html"><img src="/pics/logo.png" alt="" class="logo"></a>
+    </div>
+    <div class="access">
+      <i class="bi bi-plus-circle nav-bi" id="increase-plugin-ac"></i><i class="bi bi-dash-circle nav-bi" id="decrease-plugin-ac"></i>
     </div>
     <div class="content">
       <a href="/">
@@ -209,6 +212,7 @@
       }
     })();
   </script>
+  <script src="/js/accessibility.js"></script>
 </body>
 
 </html>

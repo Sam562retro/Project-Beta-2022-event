@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility</title>
+    <link rel="stylesheet" href="css/acessibilidade.css">
+</head>
+<body>
+    <button id="increase-plugin-ac">A+</button>
+    <button id="normal-plugin-ac">A</button>
+    <button id="decrease-plugin-ac">A-</button>
+    
+    <p>
+        Only affect the element with class CSS <code>.accessibility-plugin-ac</code>
+    </p>
+    
+    <a href="" class="accessibility-plugin-ac">Link</a>
+
+    <p class="accessibility-plugin-ac"> 
+        <span><strong>This paragraph HAVE class CSS <code>.accessibility-plugin-ac</code></strong></span>       
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est accusantium quo fugit assumenda itaque ullam, adipisci voluptatum officiis deserunt non reprehenderit perferendis iusto architecto. Molestias eius aliquam facere harum voluptate!
+    </p>
+
+    <p>
+        <span><strong>This paragraph HAVEN'T class CSS <code>.accessibility-plugin-ac</code></strong></span>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia voluptatibus id iusto architecto perspiciatis fugit quibusdam dolorem aliquam accusantium sed nemo obcaecati repellat itaque, quo unde aspernatur necessitatibus corporis aperiam?
+    </p>
+
+    <br />
+
+    <span class="accessibility-plugin-ac">This tag SPAN have class CSS  <code>.accessibility-plugin-ac</code></span>
+
+    <script src="../plugin/accessibility.js"></script>
+</body>
+</html>
