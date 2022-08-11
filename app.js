@@ -67,10 +67,9 @@ app.get('/toppers',  async(req, res) =>{
     for(i = 0; i<top.length; i++){
         let h = await toppers.get(top[i])
         console.log(h)
-        toppersList.push(h.props)
+        topperList.push(h.props)
     }
-    console.log(topperList)
-    res.render('toppers', {toppers:[]})
+    res.render('toppers', {toppers:topperList})
 })
 
 
