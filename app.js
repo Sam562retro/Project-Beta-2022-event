@@ -28,18 +28,18 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const toppers = db.collection("toppers")
 
-async function start(){
-    let q = await toppers.get('arrays')
-    for(i = 0; i<q.props.arra.length; i++){
-        await toppers.set(q.props.arra[i], {
+// async function start(){
+//     let q = await toppers.get('arrays')
+//     for(i = 0; i<q.props.arra.length; i++){
+//         await toppers.set(q.props.arra[0][0][i], {
             
-        })
-    }
-    await toppers.set('arrays', {
-        arra: []
-    })
-}
-start()
+//         })
+//     }
+//     await toppers.set('arrays', {
+//         arra: []
+//     })
+// }
+// start()
 
 app.get('/', (req, res) => {
     res.render('home')
@@ -50,16 +50,19 @@ app.get('/toppers',  async(req, res) =>{
     let top = to.props.arra
     for(i = 0; i<top.length; i++){
         let h = await toppers.get(top[i])
-        console.log(h.props)
-        console.log('------------------------------------------------------------------------------------')
-        // topperList.push(h.props)
+        topperList.push(h.props)
     }
     res.render('toppers', {toppers:topperList})
 })
 
 
 app.get('/login', (req, res) => {
-    res.render('login')
+    sessionNow=req.session;
+    if(sessionNow.userid){
+        res.redirect('/edit')
+    }else{
+      res.render('login')  
+    }
 })
 app.post('/login', (req, res) => {
     let username, password;
@@ -75,16 +78,22 @@ app.post('/login', (req, res) => {
 })
 
 
-app.get('/edit', (req, res) => {
-    // sessionNow=req.session;
-    // if(sessionNow.userid){
-    //     topper.find().then(data => {
-    //         res.render('edit', {toppers: data})
-    //     })
-    // }else{
-    //   res.redirect('/')  
-    // }
-    res.render('edit')
+app.get('/edit', async(req, res) => {
+    sessionNow=req.session;
+    if(sessionNow.userid){
+        let topperList = []
+        let toppersKeys = []
+        let to = await toppers.get('arrays')
+        let top = to.props.arra
+        for(i = 0; i<top.length; i++){
+            let h = await toppers.get(top[i])
+            topperList.push(h.props)
+            toppersKeys.push(h.key)
+        }
+        res.render('edit', {toppers:topperList, keys:toppersKeys})
+    }else{
+      res.redirect('/')  
+    }
 })
 app.get('/add', (req, res) => {
     sessionNow=req.session;
@@ -105,9 +114,6 @@ app.post('/add', async (req, res) => {
         await toppers.set('arrays', {
             arra: z.props.arra
         })
-        console.log('#######################################################')
-        console.log(z.props.arra)
-        console.log('#######################################################')
         await toppers.set(z.props.arra[z.props.arra.length-1],{
             name: req.body.name,
             clas: req.body.clas,
@@ -121,4 +127,25 @@ app.post('/add', async (req, res) => {
     }
 })
 
+app.get('/delete/:id', async(req, res) =>{
+    sessionNow=req.session;
+    if(sessionNow.userid){
+        let xe = await toppers.get('arrays')
+        let ze = xe.props.arra
+        let ye = []
+        for(i = 0; i<ze.length; i++){   
+            if(ze[i] != req.params['id']){
+                ye.push(ze[i]);
+            }
+        }
+
+        await toppers.set('arrays', {
+            arra : ye
+        })
+
+        res.redirect('/edit')
+    }else{
+      res.redirect('/login')  
+    }
+})
 app.listen(8000);

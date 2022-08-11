@@ -580,3 +580,17 @@ section:nth-child(even) {
 .email{
   border-right: solid 3px var(--grey);
 }
+
+.toppers{
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 40vh;
+  max-height: 40vh;
+  background-color: #393e46bf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5vh;
+  margin: 5vh;
+  border-radius: 10px;
+}

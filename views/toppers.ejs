@@ -43,7 +43,7 @@
       <a href="/toppers">
         <div class="nav-item acc">Achievers</div>
       </a>
-      <div class="nav-item ">Login</div>
+      <a href="/login"><div class="nav-item">Admin</div></a>
     </div>
   </div>
   <div class="mainContent1" id="content1">
@@ -116,7 +116,7 @@
                 </div>
                 <div class="contentBx">
                   <h2><%= top.name %></h2>
-                  <p style="color:white; margin-top: 1vh;">HIGHGATE School, Rohini</p>
+                  <p style="color:white; margin-top: 1vh;">HIGHGATE School, PP</p>
                   <p style="color:white; margin-top: -1vh;">Grade 10 Score:<%= top.marks %></p>
                   <p style="color:white; margin-top: -1vh;"><%= top.clas %> <%= top.section %></p>
                 </div>
@@ -127,6 +127,19 @@
       </main>
       <%}%>
     </div>
+
+      <div class="toppers">
+          <div class="details">
+              <div class="heading" style="min-width: 0; text-align:left">
+                  See your results
+              </div>
+              <div class="tagline">
+                  Looking at these toppers is all well and good, but you should know your own result. Find it out now from the CBSE website:
+              </div>
+              <button class="btn btn-success" onclick="location.href = 'https://cbseresults.nic.in/class-tenth/class10th22.htm'">Check Out Your Results</button>
+          </div>
+      </div>
+
     <div class="footer">
       <div class="heading" style="font-size: 4vw; margin-bottom:2vh">
           Reach Out To Us
