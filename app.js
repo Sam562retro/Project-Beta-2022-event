@@ -5,14 +5,14 @@ const bodyParser = require('body-parser');
 const sessions = require('express-session');
 const cookieParser = require("cookie-parser");
 const CyclicDb = require("cyclic-dynamodb")
-const { v4: uuidv4 } = require('uuid');
+const crypto = require("crypto");
 
 
 const db = CyclicDb("hilarious-erin-spacesuitCyclicDB")
 
 const oneDay = 1000 * 60 * 60 * 4;
 app.use(sessions({
-    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    secret: crypto.randomBytes(16).toString("hex"),
     saveUninitialized:true,
     cookie: { maxAge: oneDay },
     resave: false 
@@ -36,7 +36,7 @@ async function start(){
     let z = await toppers.get('arrays')
 
     for(i=0; i<=10; i++){
-        z.props.arra.push(uuidv4());
+        z.props.arra.push(crypto.randomBytes(3*4).toString('base64'));
     }
 
     await toppers.set('arrays', {

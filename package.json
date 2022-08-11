@@ -11,11 +11,11 @@
   "dependencies": {
     "body-parser": "^1.20.0",
     "cookie-parser": "^1.4.6",
+    "crypto": "^1.0.1",
     "cyclic-dynamodb": "0.0.27",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
-    "path": "^0.12.7",
-    "uuid": "^8.3.2"
+    "path": "^0.12.7"
   }
 }
